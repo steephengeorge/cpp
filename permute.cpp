@@ -5,17 +5,14 @@
 
 void create_permute(  std::string& record )
 {
-    if( !record.empty() ) 
-    {
-        std::sort( record.begin(), record.end() );
-        std::cout<<record;
+    std::sort( record.begin(), record.end() );
+    std::cout<<record;
         
-        while( std::next_permutation( record.begin(), record.end() ) )
-        {           
-            std::cout<<","<<record;     
-        } 
-        std::cout << "\n";
-    }
+    while( std::next_permutation( record.begin(), record.end() ) )
+    {           
+        std::cout<<","<<record;     
+    } 
+    std::cout << "\n";    
 }
 void readInputFile( std::string filename ) 
 {
