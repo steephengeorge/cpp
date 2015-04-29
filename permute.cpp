@@ -8,15 +8,12 @@ void create_permute(  std::string& record )
     if( !record.empty() ) 
     {
         std::sort( record.begin(), record.end() );
-        bool flag=0;
-        do{
-            if( flag )
-            {
-                std::cout<<",";
-            }
-            flag = 1;
-            std::cout << record;
-        } while( std::next_permutation( record.begin(), record.end() ) );
+        std::cout<<record;
+        
+        while( std::next_permutation( record.begin(), record.end() ) )
+        {           
+            std::cout<<","<<record;     
+        } 
         std::cout << "\n";
     }
 }
@@ -27,7 +24,7 @@ void readInputFile( std::string filename )
     infile.open( filename );
     std::string record;
     while( std::getline( infile,record ) )
-    {         
+    {        
        create_permute( record );
     }
 }
@@ -40,7 +37,7 @@ int main( int argc, char* argv[] )
         exit( 0 );
     }
     std::ios_base::sync_with_stdio( false );
-    readInputFile( argv[ 1 ] );
+    readInputFile( argv[ 1 ] );   
     
     return 0;
 }
