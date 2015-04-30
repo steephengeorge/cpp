@@ -15,15 +15,14 @@ void create_permute(  std::string& record )
     std::cout << "\n";    
 }
 void readInputFile( std::string filename ) 
-{
-    
-    std::ifstream infile;
-    infile.open( filename );
+{    
+    std::ifstream infile(filename);
     std::string record;
     while( std::getline( infile,record ) )
     {        
        create_permute( record );
     }
+    infile.close();
 }
  
 int main( int argc, char* argv[] )
