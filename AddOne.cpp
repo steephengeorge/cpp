@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <vector>
-#include<algorithm>
+#include <algorithm>
 
 // Add one to a big number
 std::vector<int> plusOne(std::vector<int> &A)

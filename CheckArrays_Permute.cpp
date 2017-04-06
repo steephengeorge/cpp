@@ -1,6 +1,6 @@
-#include<iostream>
-#include<set>
-#include<algorithm>
+#include <iostream>
+#include <set>
+#include <algorithm>
 
 bool ArraysPermute(int  array1[],int size1, int  array2[], int size2)
 {
