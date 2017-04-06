@@ -4,14 +4,14 @@
 
 bool ArraysPermute(int  array1[],int size1, int  array2[], int size2)
 {
-        if( size1  != size2)
-           return false;
+    if( size1  != size2)
+      return false;
 
-        std::multiset<int> first_set(array1, array1+size1);
-        std::multiset<int> second_set(array2, array2+size2);
+    std::multiset<int> first_set(array1, array1+size1);
+    std::multiset<int> second_set(array2, array2+size2);
 
-        return std::equal(first_set.begin(),first_set.end(),
-                                second_set.begin())? true: false;
+    return std::equal(first_set.begin(),first_set.end(),
+                        second_set.begin())? true: false;
 }
 
 
