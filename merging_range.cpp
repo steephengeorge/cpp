@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include<algorithm>
 
-
-using namespace std;
 
 struct Interval {
       int start;
@@ -11,7 +9,8 @@ struct Interval {
       Interval() : start(0), end(0) {}
       Interval(int s, int e) : start(s), end(e) {}
 };
-vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
+std::vector<Interval> insert(std::vector<Interval> &intervals,
+             Interval newInterval)
 {
     if( newInterval.start > newInterval.end)
       std::swap(newInterval.start, newInterval.end);
@@ -25,16 +24,19 @@ vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
     else if( newInterval.end <  intervals[0].start)
     {
          result.emplace_back(newInterval);
-         std::copy(std::begin(intervals), std::end(intervals),  std::back_inserter(result));
+         std::copy(std::begin(intervals), std::end(intervals),
+                   std::back_inserter(result));
          return result;
     }
     else if( newInterval.start > intervals[intervals.size()-1].end)
     {
-       std::copy(std::begin(intervals), std::end(intervals), std::back_inserter(result));
+       std::copy(std::begin(intervals), std::end(intervals),
+                   std::back_inserter(result));
        result.emplace_back(newInterval);
        return result;
     }
-    else if( newInterval.start <=  intervals[0].start &&  newInterval.end >= intervals[intervals.size()-1].end )
+    else if( newInterval.start <=  intervals[0].start &&
+              newInterval.end >= intervals[intervals.size()-1].end )
     {
         result.emplace_back(newInterval);
         return result;
@@ -46,8 +48,8 @@ vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
         int maxi=0;
         for ( size_t i =0; i< intervals.size(); ++i)
         {
-            //std::cout<<intervals[i].start <<"|"<<intervals[i].end<<"\n";
-            if(std::max(intervals[i].start, newInterval.start) < std::min(intervals[i].end, newInterval.end))
+            if(std::max(intervals[i].start, newInterval.start)
+                   < std::min(intervals[i].end, newInterval.end))
             {
                 if( flag== false)
                 {
@@ -65,7 +67,8 @@ vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
             }
             if(   i+1 <= intervals.size()-1)
             {
-                if(intervals[i].end <  newInterval.start &&  intervals[i+1].start > newInterval.end)
+                if(intervals[i].end <  newInterval.start &&
+                    intervals[i+1].start > newInterval.end)
                 {
                     result.emplace_back(intervals[i]);
                     result.emplace_back(newInterval);
@@ -83,7 +86,9 @@ vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
 }
 int main()
 {
-    std::vector<Interval> X = {{Interval(31935139, 38366404)}, {Interval(54099301, 76986474)}, {Interval(87248431, 94675146)}};
+    std::vector<Interval> X = {{Interval(31935139, 38366404)},
+                               {Interval(54099301, 76986474)},
+                               {Interval(87248431, 94675146)}};
     Interval s(43262807, 68844111);
     std::vector<Interval> re = insert(X,s);
     for( auto& ele: re)
