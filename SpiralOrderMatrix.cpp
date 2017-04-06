@@ -1,39 +1,35 @@
+/*
+print matrix spirally*/
+
 #include <iostream>
 #include <string>
 #include <vector>
-#include<algorithm>
+#include <algorithm>
 
-
-    
 
 std::vector<int> spiralOrder(const std::vector<std::vector<int> > &A) {
     std::vector<int> result;
-	// DO STUFF HERE AND POPULATE result
-	
-    // Do not write main() function.
-    // Do not read input, instead use the arguments to the function.
-    // Do not print the output, instead return values as specified
-    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+
     int T = 0;
     int B = A.size()-1;
     int L = 0;
     int R = A[0].size()-1;
     auto dir = 0;
-    
+
     while ( T <= B && L <= R)
     {
         if(dir == 0)
         {
-            for( auto i = L; i <= R; ++i) 
+            for( auto i = L; i <= R; ++i)
             {
                result.emplace_back(A[T].at(i));
-            }        
+            }
             ++T;
             ++dir;
         }
-    
-    
-    
+
+
+
         else if( dir == 1)
         {
             for( auto i = T ; i <= B; ++i )
@@ -43,12 +39,12 @@ std::vector<int> spiralOrder(const std::vector<std::vector<int> > &A) {
             --R;
             ++dir;
         }
-    
+
         else if(dir == 2)
         {
             for(auto  i = R;  i >= L ; --i )
             {
-              
+
                 result.emplace_back( A[B].at(i) );
             }
             --B;
@@ -69,18 +65,18 @@ std::vector<int> spiralOrder(const std::vector<std::vector<int> > &A) {
             ++dir;
         }
         dir= dir % 4;
-                
-    } 
+
+    }
     return result;
 }
 
 int main()
 {
-std::vector<std::vector<int>> A= {{1, 2},  {3, 4}, {5, 6}};
+    std::vector<std::vector<int>> A = {{1, 2},  {3, 4}, {5, 6}};
     auto vec= spiralOrder(A);
-    
-    
+
+
     for (auto &x: vec)
       std::cout<<x<<",";
-    
+
 }
