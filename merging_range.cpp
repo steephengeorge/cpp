@@ -1,10 +1,9 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include<algorithm>
+#include <algorithm>
 
 
-using namespace std;    
+using namespace std;
 
 struct Interval {
       int start;
@@ -12,16 +11,11 @@ struct Interval {
       Interval() : start(0), end(0) {}
       Interval(int s, int e) : start(s), end(e) {}
 };
-vector<Interval> insert(vector<Interval> &intervals, Interval newInterval) 
+vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
 {
     if( newInterval.start > newInterval.end)
       std::swap(newInterval.start, newInterval.end);
-   /* for( auto& ele: intervals)
-    {
-        std::cout<<"("<<ele.start<<","<<ele.end<<")";
-    }
-    std::cout<<"\n";*/
-    
+
     std::vector<Interval> result;
     if(intervals.size() == 0)
     {
@@ -66,19 +60,19 @@ vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
             if( flag)
             {
                 result.emplace_back(Interval(mini,maxi));
-                flag = false;  
-                
+                flag = false;
+
             }
             if(   i+1 <= intervals.size()-1)
             {
                 if(intervals[i].end <  newInterval.start &&  intervals[i+1].start > newInterval.end)
                 {
-                    result.emplace_back(intervals[i]); 
-                    result.emplace_back(newInterval);  
+                    result.emplace_back(intervals[i]);
+                    result.emplace_back(newInterval);
                     continue;
                 }
             }
-            result.emplace_back(intervals[i]);        
+            result.emplace_back(intervals[i]);
        }
         if( flag)
         {
@@ -89,9 +83,9 @@ vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
 }
 int main()
 {
-    std::vector<Interval> X= {{Interval(31935139, 38366404)}, {Interval(54099301, 76986474)}, {Interval(87248431, 94675146)}};
+    std::vector<Interval> X = {{Interval(31935139, 38366404)}, {Interval(54099301, 76986474)}, {Interval(87248431, 94675146)}};
     Interval s(43262807, 68844111);
-    std::vector<Interval> re=insert(X,s);
+    std::vector<Interval> re = insert(X,s);
     for( auto& ele: re)
     {
         std::cout<<"("<<ele.start<<","<<ele.end<<")";
