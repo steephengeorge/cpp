@@ -68,7 +68,8 @@ HelloWorld
 
 
 
-int main() {
+int main()
+{
     std::string first;
     std::getline(std::cin, first);
     std::istringstream iss(first);
@@ -82,7 +83,8 @@ int main() {
     std::map<std::string, std::string> tagValue;
     std::string tagKey;
 
-    while( n > 0){
+    while( n > 0)
+    {
         std::string input;
         std::getline(std::cin, input);
 
@@ -133,8 +135,8 @@ int main() {
     }
 
     std::string input1;
-    while(  std::getline(std::cin, input1)) {
-
+    while(  std::getline(std::cin, input1))
+    {
         if( q < 0)
             break;
          std::istringstream iss(input1);
