@@ -14,7 +14,7 @@ void sortSegments(std::string& input)
 {
     bool toggle1 = isalpha(input[0])? true: false;
     size_t k = 0;
-    for(size_t i = 1; i <= input.size(); ++i)
+    for(size_t i = 1; i < input.size(); ++i)
     {
         bool toggle2 = isalpha(input[i])? true: false;
         if(toggle1 != toggle2)
